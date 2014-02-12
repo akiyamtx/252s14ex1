@@ -1,0 +1,59 @@
+<html>
+	<head>
+	</head>
+	<body>
+
+		<form name="js">
+			Street Address 1<br><input type="text" name="address1" value=""><br>
+			Street Address 2<br><input type="text" name="address2" value=""><br>
+			City			<br><input type="text" name="city" value=""><br>
+			State			<br>
+			<script>
+				$fname="states.csv";
+				if(file_exists($fname)){
+    				$stt=file($fname);
+    		</script>
+
+				<form name="frm">
+				<select name="stt">
+    			<option value="">Select the State</option>
+			<script>
+			    for($i=0;$i<count($stt);$i++){
+			        list($stt_num, $stt_name, $stt_ruby)=explode(",", trim($stt[$i]));
+			        if(!is_numeric($stt_num)) continue;
+			        echo "<option value=".$stt_num.">".$stt_name."Åi".$stt_ruby."Åj</option>\n";
+			    }
+			</script>
+			</select>
+			</form>
+			Zip				<br><input type="text" name="zip" value=""><br>
+			Phone Number	<br><input type="text" name="phoneNum" value=""><br>
+			Email			<br><input type="text" name="email" value=""><br>
+			<input type="button" value="Submit" onclick="tbox1()"><br>
+			<input type="button" value="Delete" onclick="clr()"><br>
+		</form>
+		
+		<script>
+		
+		//Get text box word, alert if its entered value is blank
+		function tbox1(){
+			var adr1=document.js.address1.value;
+			var adr2=document.js.address2.value;
+			if (adr1==""){
+				alert("Street Address 1 cannot be blank");
+			}
+			else{
+				alert("Your Street Address 1 is " + adr1 + "\n" + adr2);
+			}
+		}
+		
+		
+		//Delete entire text box
+		function clr(){
+			document.js.address1.value="";
+			document.js.address2.value="";
+		}
+		
+		</script>
+	</body>
+</html>
